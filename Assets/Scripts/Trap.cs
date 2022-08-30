@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class Trap : MonoBehaviour
 {
-    [SerializeField] GameObject _img;
-    [SerializeField] GameObject _Shrek;
+    [SerializeField] private GameObject _img;
+    [SerializeField] private GameObject _Shrek;
 
     private void OnTriggerEnter(Collider collision)
     {
-        if (collision.TryGetComponent<playerController>(out playerController player))
+        if (collision.TryGetComponent<PlayerMovement > (out PlayerMovement player))
         {
             _img.SetActive(true);
             _Shrek.SetActive(true);
