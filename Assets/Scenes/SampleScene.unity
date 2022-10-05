@@ -2261,7 +2261,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _target: {fileID: 1604809696}
-  _signalisation: {fileID: 527975925}
+  _signalisation: {fileID: 527975928}
 --- !u!1001 &872658786
 PrefabInstance:
   m_ObjectHideFlags: 0

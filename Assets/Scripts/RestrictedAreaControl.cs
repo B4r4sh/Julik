@@ -6,17 +6,15 @@ using UnityEngine;
 public class RestrictedAreaControl : MonoBehaviour
 {
     [SerializeField] private GameObject _target;
-    [SerializeField] private GameObject _signalisation;
+    [SerializeField] private Signalization _signalisation;
 
     private bool _isTargetLocatedInZone;
     private bool _isSignalOn;
-    private Signalization _signal;
 
     public bool IsTargetLocatedInZone => _isTargetLocatedInZone;
 
     private void Start()
     {
-        _signal = _signalisation.GetComponent<Signalization>();
         _isSignalOn = false;
     }
     private bool IsVisable()
@@ -41,7 +39,7 @@ public class RestrictedAreaControl : MonoBehaviour
         {
             if (_isSignalOn == false)
             {
-                _signal.TurnOnSignalCorutine();
+                _signalisation.TurnOnSignalCorutine();
                 _isSignalOn = true;
             }
         }
@@ -49,7 +47,7 @@ public class RestrictedAreaControl : MonoBehaviour
         {
             if (_isSignalOn == true)
             {
-                _signal.TurnOffSignalCorutine();
+                _signalisation.TurnOffSignalCorutine();
                 _isSignalOn = false;
             }
         }

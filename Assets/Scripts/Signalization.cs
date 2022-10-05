@@ -14,7 +14,6 @@ public class Signalization : MonoBehaviour
 
     private Animator _animator;
     private int _animatorHash;
-    private float _minAudioVolume;
     private Coroutine _signalOn;
     private Coroutine _signalOff;
 
@@ -22,49 +21,38 @@ public class Signalization : MonoBehaviour
     {
         _animator = _light.GetComponent<Animator>();
         _animatorHash = Animator.StringToHash(name: "enemyIn");
-        _minAudioVolume = 0f;
     }
 
     public void TurnOnSignalCorutine()
     {
+        _animator.SetBool(_animatorHash, true);
+
         if (_signalOff != null)
         {
             StopCoroutine(_signalOff);
         }
 
-        _signalOn = StartCoroutine(TurnOnSignal());
+        _signalOn = StartCoroutine(ControlSignal(_maxAudioVolume, _maxColorAnimationSpeed));
     }
 
     public void TurnOffSignalCorutine()
     {
+        _animator.SetBool(_animatorHash, false);
+
         if (_signalOn != null)
         {
             StopCoroutine(_signalOn);
         }
 
-        _signalOff = StartCoroutine(TurnOffSignal());
+        _signalOff = StartCoroutine(ControlSignal(0f, 0f));
     }
 
-    private IEnumerator TurnOnSignal()
+    private IEnumerator ControlSignal(float targetAudioVolume, float targetColorAnimationSpeed)
     {
-        _animator.SetBool(_animatorHash, true);
-
         while (_audioSignal.volume < _maxAudioVolume)
         {
-            _audioSignal.volume = Mathf.MoveTowards(_audioSignal.volume, _maxAudioVolume, _volumeChangeSpeed*Time.deltaTime);
-            _animator.speed = Mathf.MoveTowards(_animator.speed, _maxColorAnimationSpeed, _colorAnimationChangeSpeed * Time.deltaTime);
-            yield return null;
-        }
-    }
-
-    private IEnumerator TurnOffSignal()
-    {
-        _animator.SetBool(_animatorHash, false);
-
-        while (_audioSignal.volume > _minAudioVolume)
-        {
-            _audioSignal.volume = Mathf.MoveTowards(_audioSignal.volume, _minAudioVolume, _volumeChangeSpeed * Time.deltaTime);
-            _animator.speed = Mathf.MoveTowards(_animator.speed, 0f, _colorAnimationChangeSpeed * Time.deltaTime);
+            _audioSignal.volume = Mathf.MoveTowards(_audioSignal.volume, targetAudioVolume, _volumeChangeSpeed * Time.deltaTime);
+            _animator.speed = Mathf.MoveTowards(_animator.speed, targetColorAnimationSpeed, _colorAnimationChangeSpeed * Time.deltaTime);
             yield return null;
         }
     }
