@@ -1233,9 +1233,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _light: {fileID: 1624152080}
   _maxColorAnimationSpeed: 5
-  _colorAnimationChangeSpeed: 1
+  _colorAnimationChangeSpeed: 0.3
   _audioSignal: {fileID: 22020305}
-  _maxAudioVolume: 0.7
+  _maxAudioVolume: 0.8
   _volumeChangeSpeed: 0.1
   _signalizationCamera: {fileID: 842620687}
 --- !u!1 &551709549
@@ -1995,7 +1995,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _img: {fileID: 589697343}
-  _Shrek: {fileID: 1258113247}
+  _shrek: {fileID: 1258113247}
 --- !u!65 &805605409
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2261,6 +2261,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _target: {fileID: 1604809696}
+  _signalisation: {fileID: 527975925}
 --- !u!1001 &872658786
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3850,7 +3851,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1604809696}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 70.850815, y: 12.01, z: 77.69}
+  m_LocalPosition: {x: 70.850815, y: 12.01, z: 79.51}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3903,6 +3904,7 @@ GameObject:
   - component: {fileID: 1624152081}
   - component: {fileID: 1624152080}
   - component: {fileID: 1624152083}
+  - component: {fileID: 1624152084}
   m_Layer: 0
   m_Name: SignalLight
   m_TagString: Untagged
@@ -4007,6 +4009,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1624152084
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1624152079}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa100735dd876cb4b8a2b19cdb5f7b7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1661580936
 PrefabInstance:
   m_ObjectHideFlags: 0
